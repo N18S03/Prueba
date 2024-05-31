@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal del Rol de Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/indexUser}" href="#">Biblioteca App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/librosPrestamos}" href="#">Mis préstamos</a>
+                </li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/usuarios/nuestrosObjetivosUsuario}">Sobre Nosotros</a>
+				</li>
+				<li class="nav-item">
+				    <a class="nav-link" th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar Usuario</a>
+				</li>
+            </ul>
+			<a class="btn btn-outline-danger my-2 my-sm-0" th:href="@{/usuarios/cerrarSesion}">Cerrar Sesión</a>
+        </div>
+    </nav>
+</header>
+<main class="container mt-4">
+    <h2 class="mb-4">Bienvenido</h2>
+    <div class="card">
+        <div class="card-body">
+            <h1>Listado de libros disponibles</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Reseña</th>
+                            <th>Autor</th>
+                            <th>Existencias</th>
+                            <th>Editorial</th>
+                            <th>Solicitar préstamo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí iteraremos sobre la lista de libros -->
+                        <tr th:each="libro : ${libros}">
+                            <td th:text="${libro.nombre}"></td>
+                            <td th:text="${libro.reseña}"></td>
+                            <td th:text="${libro.autor}"></td>
+                            <td th:text="${libro.cantidad}"></td>
+                            <td>
+                                <ul>
+                                    <li th:each="editorial : ${libro.editorial}">
+                                        <span th:text="${editorial.nombre}"></span>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <form th:action="@{/solicitarPrestamo}" method="post">
+                                    <input type="hidden" name="libroId" th:value="${libro.id}">
+                                    <button type="submit" class="btn btn-primary">Solicitar préstamo</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer mt-auto py-3 bg-dark text-white">
+    <div class="container text-center">
+        <span>© 2024 Biblioteca App. Todos los derechos reservados.</span>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-7S5WtBwA4IeXtGxzzTPXNh44ag27CUFnjRl/TfZ+mt2U5pl5+OiHXmXSmzB6ekvP"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk+5B/Q3ca5K4t0axhjze0sRV18EvoDPByw"
+        crossorigin="anonymous"></script>
+</body>
+</html>

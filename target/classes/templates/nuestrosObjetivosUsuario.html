@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Objetivos, Misión y Visión</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
+    .navbar {
+        background-color: #343a40;
+        padding: 10px 20px;
+    }
+    .navbar-brand {
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .navbar-nav .nav-link {
+        color: #fff;
+        margin-right: 20px;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #ddd;
+    }
+    .container {
+        margin-top: 30px;
+    }
+    .card {
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .btn-custom {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-custom:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+	       <a class="navbar-brand" th:href="@{/indexUser}" href="#">Biblioteca App</a>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <ul class="navbar-nav mr-auto">
+	                <li class="nav-item active">
+	                    <a class="nav-link" th:href="@{/librosPrestamos}" href="#">Mis préstamos</a>
+	                </li>
+	                <li class="nav-item active">
+						<a class="nav-link" th:href="@{/usuarios/nuestrosObjetivosUsuario}">Sobre Nosotros</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/miInformacion/}">Mi Información</a>
+	                </li>
+	            </ul>
+	            <form class="form-inline my-2 my-lg-0" action="/cerrarSesion" method="get">
+	                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+	            </form>
+	        </div>
+</nav>
+<div class="container">
+    <h1 class="text-center">Objetivos, Misión y Visión</h1>
+    <div class="card">
+        <div class="card-body">
+            <h2>Objetivos</h2>
+            <p>Desarrollar un sistema que permita la catalogación eficiente de todos los títulos disponibles en la librería. Implementar un sistema de registro de usuarios que facilite la creación de perfiles individuales y el seguimiento de préstamos. Diseñar una interfaz intuitiva y amigable para el usuario que permita la búsqueda, selección y solicitud de libros disponibles para préstamo.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h2>Misión</h2>
+            <p>Implementar una pagina eficiente y fácil de usar que permita a nuestra librería facilitar el préstamo de libros, promoviendo el acceso a la lectura y el intercambio cultural en nuestra comunidad.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h2>Visión</h2>
+            <p>Convertirnos en la plataforma líder en préstamo de libros, ofreciendo a nuestros usuarios una experiencia única y satisfactoria al acceder a una amplia gama de títulos, promoviendo así la educación, el conocimiento y el enriquecimiento personal a través de la lectura.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
