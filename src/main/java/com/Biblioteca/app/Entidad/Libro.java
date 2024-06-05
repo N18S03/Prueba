@@ -79,7 +79,6 @@ public class Libro {
 
 	public void setEditorial(List<Editorial> editorial) {
 		this.editoriales = editorial;
-	}
-	
+	}	
 	
 }

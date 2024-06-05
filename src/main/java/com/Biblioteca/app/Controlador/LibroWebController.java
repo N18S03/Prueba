@@ -5,7 +5,9 @@ import com.Biblioteca.app.Entidad.Libro;
 import com.Biblioteca.app.Repository.EditorialRepository;
 import com.Biblioteca.app.Repository.LibroRepository;
 
+import jakarta.servlet.http.HttpSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class LibroWebController {
     public String mostrarInformeLibro(@PathVariable String id, Model model) {
         Libro libro = libroRepositorio.findById(id).orElse(null);
         model.addAttribute("libro", libro);
-        return "informeLibro"; // Nombre del HTML que muestra el informe del libro
+        return "informeLibro";
     }
     
     @GetMapping("/")
@@ -53,7 +55,7 @@ public class LibroWebController {
     @PostMapping("/add")
     public String addLibroSubmit(@ModelAttribute Libro libro) {
         libroRepositorio.save(libro);
-        return "redirect:/libros/";
+        return "redirect:/indexAdmin";
     }
 
     @GetMapping("/edit/{id}")
@@ -68,23 +70,28 @@ public class LibroWebController {
     @PostMapping("/edit")
     public String editLibroSubmit(@ModelAttribute Libro libro) {
         Libro existingLibro = libroRepositorio.findById(libro.getId()).orElse(null);
-
         if (existingLibro != null) {
             existingLibro.setNombre(libro.getNombre());
             existingLibro.setReseña(libro.getReseña());
             existingLibro.setAutor(libro.getAutor());
             existingLibro.setCantidad(libro.getCantidad());
             existingLibro.setEditorial(libro.getEditorial());
-
             libroRepositorio.save(existingLibro);
         }
-
-        return "redirect:/libros/";
+        return "redirect:/indexAdmin";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteLibro(@PathVariable("id") String id) {
         libroRepositorio.deleteById(id);
-        return "redirect:/libros/";
+        return "redirect:/indexAdmin";
+    }
+    
+    @GetMapping("/cerrarSesion")
+    public String cerrarSesion(HttpSession session, Model model) {
+        session.removeAttribute("administrador");
+        List<Libro> libros = libroRepositorio.findAll();
+        model.addAttribute("libros", libros);
+        return "redirect:/"; 
     }
 }
