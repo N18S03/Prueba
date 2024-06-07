@@ -41,6 +41,30 @@
 </style>
 </head>
 <body>
+	<header class="navbar navbar-expand-lg navbar-dark bg-dark">
+	        <!-- Barra de navegación -->
+	        <div class="container">
+	            <a class="navbar-brand" th:href="@{/indexAdmin}">Panel de Administrador</a>
+	            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	                <span class="navbar-toggler-icon"></span>
+	            </button>
+	            <div class="collapse navbar-collapse" id="navbarNav">
+	                <ul class="navbar-nav">
+	                    <li class="nav-item">
+	                        <a class="nav-link" th:href="@{/administradores/}">administradores</a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a class="nav-link" th:href="@{/editoriales/}">editoriales</a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a class="nav-link" th:href="@{/usuarios/}">usuarios</a>
+	                    </li>
+	                </ul>
+	            </div>
+				
+	        </div>
+			<a class="btn btn-outline-danger my-2 my-sm-0" th:href="@{/libros/cerrarSesion}">Cerrar Sesión</a>
+	    </header>
 <div class="container">
     <div class="card">
         <div class="card-body">

@@ -3,29 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Objetivos, Misión y Visión</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <style>
     body {
         background-color: #f8f9fa;
         font-family: Arial, sans-serif;
     }
-    .navbar {
-        background-color: #343a40;
-        padding: 10px 20px;
-    }
-    .navbar-brand {
-        color: #fff;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    .navbar-nav .nav-link {
-        color: #fff;
-        margin-right: 20px;
-    }
-    .navbar-nav .nav-link:hover {
-        color: #ddd;
-    }
+    
     .container {
         margin-top: 30px;
     }
@@ -49,25 +34,30 @@
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-	       <a class="navbar-brand" th:href="@{/indexUser}" href="#">Biblioteca App</a>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<header>
+	    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	        <a class="navbar-brand" th:href="@{/indexUser}" href="#">Biblioteca App</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	            <ul class="navbar-nav mr-auto">
 	                <li class="nav-item active">
 	                    <a class="nav-link" th:href="@{/librosPrestamos}" href="#">Mis préstamos</a>
 	                </li>
-	                <li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" th:href="@{/usuarios/nuestrosObjetivosUsuario}">Sobre Nosotros</a>
-	                </li>
-	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/miInformacion/}">Mi Información</a>
-	                </li>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar Usuario</a>
+					</li>
 	            </ul>
-	            <form class="form-inline my-2 my-lg-0" action="/cerrarSesion" method="get">
-	                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar Sesión</button>
-	            </form>
+				<a class="btn btn-outline-danger my-2 my-sm-0" th:href="@{/usuarios/cerrarSesion}">Cerrar Sesión</a>
 	        </div>
-</nav>
+	    </nav>
+	</header>
 <div class="container">
     <h1 class="text-center">Objetivos, Misión y Visión</h1>
     <div class="card">

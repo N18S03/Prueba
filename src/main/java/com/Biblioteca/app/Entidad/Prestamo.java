@@ -15,6 +15,7 @@ public class Prestamo {
     private Date fechaPrestamo;
     private Date fechaDevolucion;
     
+    
 	public Prestamo() {
 		super();
 	}

@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+	<header>
+	    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	        <a class="navbar-brand" th:href="@{/indexUser}" href="#">Biblioteca App</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <ul class="navbar-nav mr-auto">
+	                <li class="nav-item active">
+	                    <a class="nav-link" th:href="@{/librosPrestamos}" href="#">Mis préstamos</a>
+	                </li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/usuarios/nuestrosObjetivosUsuario}">Sobre Nosotros</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" th:href="@{/usuarios/edit/{id}(id=${usuario.id})}">Editar Usuario</a>
+					</li>
+	            </ul>
+				<a class="btn btn-outline-danger my-2 my-sm-0" th:href="@{/usuarios/cerrarSesion}">Cerrar Sesión</a>
+	        </div>
+	    </nav>
+	</header>
 <div class="container mt-5">
     <h2>Editar Usuario</h2>
     <form th:action="@{/usuarios/edit}" th:object="${usuario}" method="post">
